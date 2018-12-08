@@ -1,0 +1,222 @@
+import org.openhab.core.library.types.*
+import java.awt.Color
+
+rule "Set HSB value of item RGBLed to RGB color value"
+when
+	Item Sofa_LED changed
+then
+	val hsbValue = Sofa_LED.state as HSBType
+
+	val brightness = hsbValue.brightness.intValue 
+	val int redValue = ((((hsbValue.red.intValue * 255) / 100) *brightness) /100)
+	val int greenValue = ((((hsbValue.green.intValue * 255) / 100) *brightness) /100)
+	val int blueValue = ((((hsbValue.blue.intValue * 255) / 100) *brightness) /100)
+
+	var String red = Long.toHexString(redValue)
+	var String green = Long.toHexString(greenValue)
+	var String blue = Long.toHexString(blueValue)
+	val send = "*" + red + "" + green + "" + blue
+	
+	sendCommand( Sofa_LED_Send, send)
+end
+
+rule "MQTT Mc Lightning Send Effects"
+when
+	Item Sofa_LED_Effects changed
+then
+	val send = "/"+ Sofa_LED_Effects.state
+
+	sendCommand( Sofa_LED_Send, send)
+end
+
+rule "MQTT Mc Lightning Send Brightness"
+when
+	Item Sofa_LED_Brightness changed
+then
+	val send = "%"+ Sofa_LED_Brightness.state
+
+	sendCommand( Sofa_LED_Send, send)
+end
+
+rule "MQTT Mc Lightning Send Speed"
+when
+	Item Sofa_LED_Speed changed
+then
+	val send = "?"+ Sofa_LED_Speed.state
+
+	sendCommand( Sofa_LED_Send, send)
+end
+
+rule "Set HSB value of item RGBLed to RGB color value to hex"
+when
+	Item Spiegel_LED changed
+then
+	val hsbValue = Spiegel_LED.state as HSBType
+
+	val brightness = hsbValue.brightness.intValue 
+	val redValue = ((((hsbValue.red.intValue * 255) / 100) *brightness) /100).toString
+	val greenValue = ((((hsbValue.green.intValue * 255) / 100) *brightness) /100).toString
+	val blueValue = ((((hsbValue.blue.intValue * 255) / 100) *brightness) /100).toString
+
+	var String red = Long.toHexString(redValue)
+	var String green = Long.toHexString(greenValue)
+	var String blue = Long.toHexString(blueValue)
+	val send = "*" + red + "" + green + "" + blue
+
+	sendCommand( Spiegel_LED_Send, send)
+end
+
+rule "MQTT Mc Lightning Send Effects"
+when
+	Item Spiegel_LED_Effects changed
+then
+	val send = "/"+ Spiegel_LED_Effects.state
+
+	sendCommand( Spiegel_LED_Send, send)
+end
+
+rule "MQTT Mc Lightning Send Brightness"
+when
+	Item Spiegel_LED_Brightness changed
+then
+	val send = "%"+ Spiegel_LED_Brightness.state
+
+	sendCommand( Spiegel_LED_Send, send)
+end
+
+rule "MQTT Mc Lightning Send Speed"
+when
+	Item Spiegel_LED_Speed changed
+then
+	val send = "?"+ Spiegel_LED_Speed.state
+
+	sendCommand( Spiegel_LED_Send, send)
+end
+
+rule "Set HSB value of item RGBLed to RGB color value"
+when
+	Item All_LED changed
+then
+	val hsbValue = All_LED.state as HSBType
+
+	val brightness = hsbValue.brightness.intValue 
+	val int redValue = ((((hsbValue.red.intValue * 255) / 100) *brightness) /100)
+	val int greenValue = ((((hsbValue.green.intValue * 255) / 100) *brightness) /100)
+	val int blueValue = ((((hsbValue.blue.intValue * 255) / 100) *brightness) /100)
+
+	var String red = Long.toHexString(redValue)
+	var String green = Long.toHexString(greenValue)
+	var String blue = Long.toHexString(blueValue)
+	val send = "*" + red + "" + green + "" + blue
+	
+	sendCommand( Spiegel_LED_Send, send)
+	sendCommand( Sofa_LED_Send, send)
+end
+
+rule "MQTT Mc Lightning Send Effects"
+when
+	Item All_LED_Effects changed
+then
+	val send = "/"+ All_LED_Effects.state
+
+	sendCommand( Spiegel_LED_Send, send)
+	sendCommand( Sofa_LED_Send, send)
+end
+
+rule "MQTT Mc Lightning Send Brightness"
+when
+	Item All_LED_Brightness changed
+then
+	val send = "%"+ All_LED_Brightness.state
+
+	sendCommand( Spiegel_LED_Send, send)
+	sendCommand( Sofa_LED_Send, send)
+end
+
+rule "MQTT Mc Lightning Send Speed"
+when
+	Item All_LED_Speed changed
+then
+	val send = "?"+ All_LED_Speed.state
+
+	sendCommand( Spiegel_LED_Send, send)
+	sendCommand( Sofa_LED_Send, send)
+end
+
+rule "433 Plug 02 ON"
+when
+    Item IPlugV1_02 changed from OFF to ON
+then
+        sendCommand(IPlugV1, "2 ON")    
+end
+
+rule "433 Plug 02 OFF"
+when
+    Item IPlugV1_02 changed from ON to OFF
+then
+        sendCommand(IPlugV1, "2 OFF")
+end
+
+rule "433 Plug 03 ON"
+when
+    Item IPlugV1_03 changed from OFF to ON
+then
+        sendCommand(IPlugV1, "3 ON")    
+end
+
+rule "433 Plug 03 OFF"
+when
+    Item IPlugV1_03 changed from ON to OFF
+then
+        sendCommand(IPlugV1, "3 OFF")
+end
+
+rule "433 Plug 04 ON"
+when
+    Item IPlugV1_04 changed from OFF to ON
+then
+        sendCommand(IPlugV1, "4 ON")    
+end
+
+rule "433 Plug 04 OFF"
+when
+    Item IPlugV1_04 changed from ON to OFF
+then
+        sendCommand(IPlugV1, "4 OFF")
+end
+
+rule "433 Wohnzimmer All ON"
+when
+    Item IGruppeLichtWohnzimmer changed from OFF to ON
+then
+	if(IPlugV1_02.state == OFF) {
+        sendCommand(IPlugV1_02, ON)
+		Thread::sleep(1500)
+	} 
+	if(IPlugV1_03.state == OFF) {
+		sendCommand(IPlugV1_03, ON)     
+		Thread::sleep(1500)
+	}
+	if(IPlugV1_04.state == OFF) {
+		sendCommand(IPlugV1_04, ON)
+		Thread::sleep(1500)
+	}
+end
+
+rule "433 Wohnzimmer All OFF"
+when
+    Item IGruppeLichtWohnzimmer changed from ON to OFF
+then
+    if(IPlugV1_02.state == ON) {
+        sendCommand(IPlugV1_02, OFF)
+		Thread::sleep(1500)
+	} 
+	if(IPlugV1_03.state == ON) {
+		sendCommand(IPlugV1_03, OFF)     
+		Thread::sleep(1500)
+	}
+	if(IPlugV1_04.state == ON) {
+		sendCommand(IPlugV1_04, OFF)
+		Thread::sleep(1500)
+	}
+end

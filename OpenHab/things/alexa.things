@@ -1,0 +1,2 @@
+Thing exec:command:TPlugV1  [command="bash /opt/rc-switch/rcswitch-pi/switch.sh %2$s", transform="REGEX((.*?))", interval=0, autorun=true]
+Thing hyperion:serverV1:myServer [ host="192.168.0.87", port=19444, priority=50, poll_frequency=15]

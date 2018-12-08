@@ -1,0 +1,54 @@
+Number BadThermostatCurrentTemp "Bad" (gBadThermostat) [ "CurrentTemperature" ] {channel="max:thermostat:NEQ1207670:MEQ1455046:actual_temp"}
+
+Group gBadThermostat "Bad Thermostat" ["Thermostat"]
+Number BadThermostatTargetTemperature "Bad Thermostat Soll Temperatur" (gBadThermostat) [ "TargetTemperature" ] {channel="max:thermostat:NEQ1207670:MEQ1455046:set_temp"}
+
+Number WohnThermostatCurrentTemp "Wohnzimmer" (gWohnThermostat) [ "CurrentTemperature" ] {channel="max:thermostat:NEQ1207670:MEQ1456826:actual_temp"}
+
+Group gWohnThermostat "Wohnzimmer Thermostat" ["Thermostat"]
+Number WohnThermostatTargetTemperature "Wohnzimmer Thermostat Soll Temperatur" (gWohnThermostat) [ "TargetTemperature" ] {channel="max:thermostat:NEQ1207670:MEQ1456826:set_temp"}
+
+
+Number SchlafThermostatCurrentTemp "Schlafzimmer" (gSchlafThermostat) [ "CurrentTemperature" ] {channel="max:thermostat:NEQ1207670:MEQ1457471:actual_temp"}
+
+Group gSchlafThermostat "Schlafzimmer Thermostat" ["Thermostat"]
+Number SchlafThermostatTargetTemperature "Schlafzimmer Thermostat Soll Temperatur" (gSchlafThermostat) [ "TargetTemperature" ] {channel="max:thermostat:NEQ1207670:MEQ1457471:set_temp"}
+
+Number KloThermostatCurrentTemp "Klo" (gKloThermostat) [ "CurrentTemperature" ] {channel="max:thermostat:NEQ1207670:MEQ1455350:actual_temp"}
+
+Group gKloThermostat "Klo Thermostat" ["Thermostat"]
+Number KloThermostatTargetTemperature "Klo Thermostat Soll Temperatur" (gKloThermostat) [ "TargetTemperature" ] {channel="max:thermostat:NEQ1207670:MEQ1455350:set_temp"}
+
+
+String IPlugV1 { channel="exec:command:TPlugV1:input", autoupdate="false" }
+Switch IPlugV1_04 "Sonne" <light> [ "Switchable" ]
+Switch IPlugV1_03 "Leuchte" <light> [ "Switchable" ]
+Switch IPlugV1_02 "Standleuchte" <light> [ "Switchable" ]
+
+Switch IGruppeLichtWohnzimmer "Wohnzimmer Lichter" <light> [ "Switchable" ]
+
+
+Color Sofa_LED "Sofa" <light> ["Lighting"] 
+String Sofa_LED_Send {mqtt=">[HomeMQTT:ESP8266_Sofa_LED/in:state:*:default]"} 
+Number Sofa_LED_Effects 
+Number Sofa_LED_Brightness
+Number Sofa_LED_Speed
+
+Color Spiegel_LED "Spiegel" <light> ["Lighting"] 
+String Spiegel_LED_Send {mqtt=">[HomeMQTT:ESP8266_Spiegel_LED/in:state:*:default]"} 
+Number Spiegel_LED_Effects 
+Number Spiegel_LED_Brightness
+Number Spiegel_LED_Speed
+
+Color All_LED "All" <light> ["Lighting"] 
+String All_LED_Send {mqtt=">[HomeMQTT:ESP8266_All_LED/in:state:*:default]"} 
+Number All_LED_Effects 
+Number All_LED_Brightness
+Number All_LED_Speed
+
+
+Dimmer Brightness 			"Brightness [%s]" 	{ channel="hyperion:serverV1:myServer:brightness"}
+String Effect				"Current effect [%s]" 	{ channel="hyperion:serverV1:myServer:effect"}
+Color MyColor				"TV" <light> ["Lighting"]  { channel="hyperion:serverV1:myServer:color"} 
+Switch ClearAllSwitch		"Clear all priorities" { channel="hyperion:serverV1:myServer:clear_all"}
+Switch ClearSwitch          "Clear priority"  { channel="hyperion:serverV1:myServer:clear"}

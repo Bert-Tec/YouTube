@@ -1,0 +1,47 @@
+sitemap Home label="Wohnung" {
+	Frame label="Steckdosen" {
+		Switch item=IGruppeLichtWohnzimmer label="Alle Wohnzimmer Steckdosen" icon="light"
+		Switch item=IPlugV1_04 label="Sonne" icon="light"
+		Switch item=IPlugV1_03 label="Sofa" icon="light"
+		Switch item=IPlugV1_02 label="Standleuchte" icon="light"
+	}
+	Frame label="Thermostate" {
+		Text item=BadThermostatCurrentTemp label="Aktuelle Temperatur Bad" 
+		Setpoint  item=BadThermostatTargetTemperature label="Soll Temperatur Bad" minValue=4.5 maxValue=30 step=0.5
+		Text item=WohnThermostatCurrentTemp label="Aktuelle Temperatur Wohnzimmer" 
+		Setpoint  item=WohnThermostatTargetTemperature label="Soll Temperatur Wohnzimmer" minValue=4.5 maxValue=30 step=0.5
+		Text item=SchlafThermostatCurrentTemp label="Aktuelle Temperatur Schlafzimmer" 
+		Setpoint  item=SchlafThermostatTargetTemperature label="Soll Temperatur Schlafzimmer" minValue=4.5 maxValue=30 step=0.5
+		Text item=KloThermostatCurrentTemp label="Aktuelle Temperatur Klo" 
+		Setpoint  item=KloThermostatTargetTemperature label="Soll Temperatur Klo" minValue=4.5 maxValue=30 step=0.5
+	}
+	Frame label="Spiegel LED"	{
+		Colorpicker item=Spiegel_LED label="Spiegel LED" icon="colorwheel"
+		
+		Selection item=Spiegel_LED_Effects label="Spiegel Effekte" mappings=[0="Static", 1="Blink", 2="Breath", 3="Color Wipe", 4="Color Wipe Inverse", 5="Color Wipe Reverse", 6="Color Wipe Reverse Inverse", 7="Color Wipe Random", 8="Random Color", 9="Single Dynamic", 10="Multi Dynamic", 11="Rainbow", 12="Rainbow Cycle", 13="Scan", 14="Dual Scan", 15="Fade", 16="Theater Chase", 17="Theater Chase Rainbow", 18="Running Lights", 19="Twinkle", 20="Twinkle Random", 21="Twinkle Fade", 22="Twinkle Fade Random", 23="Sparkle", 24="Flash Sparkle", 25="Hyper Sparkle", 26="Strobe", 27="Strobe Rainbow", 28="Multi Strobe", 29="Blink Rainbow", 30="Chase White", 31="Chase Color", 32="Chase Random", 33="Chase Rainbow", 34="Chase Flash", 35="Chase Flash Random", 36="Chase Rainbow White", 37="Chase Blackout", 38="Chase Blackout Rainbow", 39="Color Sweep Random", 40="Running Color", 41="Running Red Blue", 42="Running Random", 43="Larson Scanner", 44="Comet", 45="Fireworks", 46="Fireworks Random", 47="Merry Christmas", 48="Fire Flicker", 49="Fire Flicker (soft)", 50="Fire Flicker (intense)", 51="Circus Combustus", 52="Halloween", 53="Bicolor Chase", 54="Tricolor Chase", 55="ICU"]
+		Setpoint item=Spiegel_LED_Speed label="Spiegel Geschwindigkeit" minValue=5 maxValue=255 step=12.5
+		Setpoint item=Spiegel_LED_Brightness label="Spiegel Helligkeit" minValue=5 maxValue=255 step=50
+	}
+	Frame label="Sofa LED"	{
+		Colorpicker item=Sofa_LED label="Sofa LED" icon="colorwheel"
+		
+		Selection item=Sofa_LED_Effects label="Sofa Effekte" mappings=[0="Static", 1="Blink", 2="Breath", 3="Color Wipe", 4="Color Wipe Inverse", 5="Color Wipe Reverse", 6="Color Wipe Reverse Inverse", 7="Color Wipe Random", 8="Random Color", 9="Single Dynamic", 10="Multi Dynamic", 11="Rainbow", 12="Rainbow Cycle", 13="Scan", 14="Dual Scan", 15="Fade", 16="Theater Chase", 17="Theater Chase Rainbow", 18="Running Lights", 19="Twinkle", 20="Twinkle Random", 21="Twinkle Fade", 22="Twinkle Fade Random", 23="Sparkle", 24="Flash Sparkle", 25="Hyper Sparkle", 26="Strobe", 27="Strobe Rainbow", 28="Multi Strobe", 29="Blink Rainbow", 30="Chase White", 31="Chase Color", 32="Chase Random", 33="Chase Rainbow", 34="Chase Flash", 35="Chase Flash Random", 36="Chase Rainbow White", 37="Chase Blackout", 38="Chase Blackout Rainbow", 39="Color Sweep Random", 40="Running Color", 41="Running Red Blue", 42="Running Random", 43="Larson Scanner", 44="Comet", 45="Fireworks", 46="Fireworks Random", 47="Merry Christmas", 48="Fire Flicker", 49="Fire Flicker (soft)", 50="Fire Flicker (intense)", 51="Circus Combustus", 52="Halloween", 53="Bicolor Chase", 54="Tricolor Chase", 55="ICU"]
+		Setpoint item=Sofa_LED_Speed label="Sofa Geschwindigkeit" minValue=5 maxValue=255 step=12.5
+		Setpoint item=Sofa_LED_Brightness label="Sofa Helligkeit" minValue=5 maxValue=255 step=50
+	}
+	Frame label="All LED"	{
+		Colorpicker item=All_LED label="All LED" icon="colorwheel"
+		
+		Selection item=All_LED_Effects label="All Effekte" mappings=[0="Static", 1="Blink", 2="Breath", 3="Color Wipe", 4="Color Wipe Inverse", 5="Color Wipe Reverse", 6="Color Wipe Reverse Inverse", 7="Color Wipe Random", 8="Random Color", 9="Single Dynamic", 10="Multi Dynamic", 11="Rainbow", 12="Rainbow Cycle", 13="Scan", 14="Dual Scan", 15="Fade", 16="Theater Chase", 17="Theater Chase Rainbow", 18="Running Lights", 19="Twinkle", 20="Twinkle Random", 21="Twinkle Fade", 22="Twinkle Fade Random", 23="Sparkle", 24="Flash Sparkle", 25="Hyper Sparkle", 26="Strobe", 27="Strobe Rainbow", 28="Multi Strobe", 29="Blink Rainbow", 30="Chase White", 31="Chase Color", 32="Chase Random", 33="Chase Rainbow", 34="Chase Flash", 35="Chase Flash Random", 36="Chase Rainbow White", 37="Chase Blackout", 38="Chase Blackout Rainbow", 39="Color Sweep Random", 40="Running Color", 41="Running Red Blue", 42="Running Random", 43="Larson Scanner", 44="Comet", 45="Fireworks", 46="Fireworks Random", 47="Merry Christmas", 48="Fire Flicker", 49="Fire Flicker (soft)", 50="Fire Flicker (intense)", 51="Circus Combustus", 52="Halloween", 53="Bicolor Chase", 54="Tricolor Chase", 55="ICU"]
+		Setpoint item=All_LED_Speed label="All Geschwindigkeit" minValue=5 maxValue=255 step=12.5
+		Setpoint item=All_LED_Brightness label="All Helligkeit" minValue=5 maxValue=255 step=50
+	}
+	   Frame label="Hyperion" {
+               	Slider item=Brightness
+				Selection item=Effect mappings=['Knight rider' = 'Knight rider', 'Red mood blobs'='Red mood blobs']
+				Switch item=ClearAllSwitch
+				Switch item=ClearSwitch
+				Colorpicker item=MyColor
+	}
+	
+}
